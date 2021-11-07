@@ -45,7 +45,6 @@ class Particle {
     {
       myX = 300;
       myY = 300;
-      mySpeed = (int)(Math.random()*11);
     }
   }
 
