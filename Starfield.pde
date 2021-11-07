@@ -17,6 +17,7 @@ void draw() {
   {
     wow[i].move();
     wow[i].show();
+    wow[i].reset();
   }
 }
 
@@ -37,6 +38,15 @@ class Particle {
   void move() {
     myX = myX + (float)(Math.cos(myAngle)*mySpeed);
     myY = myY + (float)(Math.sin(myAngle)*mySpeed);
+  }
+
+  void reset() {
+    if (myX < -10 || myX > 610 || myY < -10 || myY > 610 )
+    {
+      myX = 300;
+      myY = 300;
+      mySpeed = (int)(Math.random()*11);
+    }
   }
 
   void show() {
@@ -78,15 +88,19 @@ class Oddball extends Particle {
     myY=300;
     myAngle = (Math.random()*3)*Math.PI;
     mySpeed = (int)(Math.random()*11);
-    myColor = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255), 80);
+    myColor = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255), 100);
   }
   void move() {
     myX = myX + (float)(Math.cos(myAngle)*mySpeed);
     myY = myY + (float)(Math.sin(myAngle)*mySpeed);
-    if (myX < -10|| myX > 610)
+  }
+  void reset() {
+    if (myX < -10 || myX > 610 || myY < -10 || myY > 610 )
     {
       myX = 300;
       myY = 300;
+      mySpeed = (int)(Math.random()*11);
+      myAngle = (int)(Math.random()*3)*Math.PI;
     }
   }
   void show() {
@@ -95,4 +109,3 @@ class Oddball extends Particle {
     ellipse(myX, myY, 10, 10);
   }
 }
-
